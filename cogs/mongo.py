@@ -57,6 +57,10 @@ class Document:
         """
         return await self.db.find_one({"_id": id})
 
+    async def get_info(self, id):
+        """Returns user info"""
+        return await self.db.find_one({"_id": id}, {"credits": 1, "form": 1, "color": 1, "XP": 1, "level": 1, "hp": 1, "atk": 1, "def": 1, "sp": 1})
+
     async def delete_by_id(self, id):
         """
         Deletes all items found with _id: `id`
